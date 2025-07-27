@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Babalola Elijah Olumide | Portfolio</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Arial,sans-serif;background:#fff;color:#333;scroll-behavior:smooth;overflow-x:hidden}
+    h1,h2{text-align:center;margin-bottom:20px}
+    section{padding:60px 20px;max-width:1100px;margin:auto;opacity:0;transform:translateY(50px);transition:opacity 1s ease,transform 1s ease}
+    section.visible{opacity:1;transform:translateY(0)}
+    nav{position:fixed;top:0;left:0;right:0;background:#ffffffee;display:flex;justify-content:center;gap:30px;padding:15px;box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000}
+    nav a{text-decoration:none;color:#333;font-weight:bold;transition:color .3s}
+    nav a:hover{color:#4cafef}
+    .hero{position:relative;height:100vh;background:url('assets/profile1.jpg') no-repeat center center/cover;display:flex;justify-content:center;align-items:center;text-align:center;color:#fff;perspective:1000px}
+    .hero::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:0}
+    .hero-content{background:rgba(0,0,0,.6);padding:40px;border-radius:10px;z-index:1;transition:transform 1s,opacity 1s}
+    body.scrolled .hero-content{transform:rotateX(-90deg);opacity:0}
+    .hero h1{font-size:3rem;margin-bottom:20px}
+    .hero p{font-size:1.5rem}
+
+    /* About */
+    .about img{width:150px;border-radius:50%;display:block;margin:0 auto 20px;box-shadow:0 0 10px rgba(0,0,0,.2)}
+
+    /* Skills */
+    .skills .skill-bar{margin:20px 0}
+    .skills .bar{position:relative;height:22px;background:#e0e0e0;border-radius:10px;overflow:hidden}
+    .skills .bar-fill{height:100%;width:0;background:#4cafef;transition:width 1.8s ease-in-out}
+    .skills .level-text{position:absolute;right:10px;top:0;height:100%;display:flex;align-items:center;font-weight:bold;opacity:0;transform:scale(.8);transition:opacity .5s ease,transform .5s ease}
+    .skills .bar-fill.animate + .level-text{opacity:1;transform:scale(1)}
+
+    /* Projects Grid */
+    .project-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
+    .project-card{position:relative;flex:1 1 calc(50% - 40px);min-width:280px;cursor:pointer;overflow:hidden;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,.1);transition:transform .3s}
+    .project-card img{width:100%;height:250px;object-fit:cover;border-radius:10px;transition:transform .3s}
+    .project-card:hover{transform:scale(1.03)}
+    .project-card span{position:absolute;bottom:10px;left:10px;color:#fff;background:rgba(0,0,0,.6);padding:8px 12px;border-radius:5px;font-weight:bold}
+
+    /* Extra Projects (GitHub Buttons) */
+    .other-projects{text-align:center;margin-top:30px}
+    .other-projects a{display:inline-block;margin:10px;padding:12px 20px;background:#4cafef;color:#fff;text-decoration:none;border-radius:8px;font-weight:bold;transition:background .3s}
+    .other-projects a:hover{background:#388bd1}
+
+    /* Overlay Container */
+    .overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);display:flex;justify-content:center;align-items:flex-start;opacity:0;visibility:hidden;transition:opacity .5s;z-index:2000;overflow-y:auto}
+    .overlay.active{opacity:1;visibility:visible}
+    body.overlay-open{overflow:hidden}
+    .overlay-content{background:#fff;padding:20px;max-width:900px;width:90%;border-radius:10px;margin:40px auto;animation:fadeIn .5s ease-in-out}
+    @keyframes fadeIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+    .overlay img.banner{width:100%;height:250px;object-fit:cover;border-radius:10px;margin-bottom:20px}
+    .overlay h3{margin-bottom:10px}
+    .overlay p{margin-bottom:20px;line-height:1.6}
+    .overlay a{color:#4cafef;text-decoration:none;font-weight:bold}
+    .close-overlay{display:block;margin-top:20px;padding:10px 20px;background:#4cafef;color:#fff;border:none;border-radius:5px;cursor:pointer}
+
+    /* Sliders */
+    .slider{position:relative;overflow:hidden;margin-top:20px;border-radius:10px}
+    .slides{display:flex;transition:transform .5s ease-in-out}
+    .graph-slide{flex:0 0 100%;text-align:center}
+    .graph-slide img{width:100%;max-height:300px;object-fit:cover}
+    .graph-title{margin-top:10px;font-size:14px;font-weight:bold}
+    .slider button{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:none;padding:10px;cursor:pointer}
+    .slider .prev{left:10px}.slider .next{right:10px}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a href="#cv">CV</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>I'm Babalola Elijah Olumide</h1>
+      <p id="typing-text"></p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about fade-section">
+    <img src="assets/profile.jpg" alt="Profile">
+    <h2>About Me</h2>
+    <p>Born February 2000 in Osun State, Nigeria. Resourceful and results-driven Meteorology and Climate Science graduate with a strong foundation in data analysis, environmental research, and renewable energy studies. Skilled in Python, machine learning, GIS, and climate modeling. Recognized for leadership and innovation, combining technical expertise with exceptional communication and project management skills. Passionate about driving sustainable solutions and advancing environmental technologies.</p>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills fade-section">
+    <h2>Skills</h2>
+    <div class="skill-bar" data-level="Expert"><span>Python</span><div class="bar"><div class="bar-fill"></div><span class="level-text"></span></div></div>
+    <div class="skill-bar" data-level="Advanced"><span>Machine Learning</span><div class="bar"><div class="bar-fill"></div><span class="level-text"></span></div></div>
+    <div class="skill-bar" data-level="Intermediate"><span>ArcGIS</span><div class="bar"><div class="bar-fill"></div><span class="level-text"></span></div></div>
+    <div class="skill-bar" data-level="Advanced"><span>Data Visualization</span><div class="bar"><div class="bar-fill"></div><span class="level-text"></span></div></div>
+    <div class="skill-bar" data-level="Expert"><span>Excel</span><div class="bar"><div class="bar-fill"></div><span class="level-text"></span></div></div>
+    <div class="skill-bar" data-level="Intermediate"><span>CDO (Climate Data Operators)</span><div class="bar"><div class="bar-fill"></div><span class="level-text"></span></div></div>
+    <div class="skill-bar" data-level="Advanced"><span>PyFerret</span><div class="bar"><div class="bar-fill"></div><span class="level-text"></span></div></div>
+    <div class="skill-bar" data-level="Intermediate"><span>R</span><div class="bar"><div class="bar-fill"></div><span class="level-text"></span></div></div>
+    <div class="skill-bar" data-level="Expert"><span>Hydrognomon</span><div class="bar"><div class="bar-fill"></div><span class="level-text"></span></div></div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects fade-section" id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card" data-overlay="overlay1"><img src="assets/b2ca89b3266484167d65991861a75727.jpg"><span>Sea Surface Temperature (Gulf of Guinea)</span></div>
+      <div class="project-card" data-overlay="overlay2"><img src="assets/flood.jpg"><span>Spatio-Temporal Flood Analysis in Lokoja</span></div>
+      <div class="project-card" data-overlay="overlay3"><img src="assets/Watering Plant to Grow.jpeg"><span>Advancing Tree Planting in Oyo State</span></div>
+      <div class="project-card" data-overlay="overlay4"><img src="assets/placeholder-nairobi.jpg"><span>Air Quality in Nairobi</span></div>
+    </div>
+
+    <!-- Other Projects -->
+    <div class="other-projects">
+      <a href="https://github.com/olubabs/AutoRegressive-Integrated-Moving-Average-ARIMA-" target="_blank">ARIMA Forecasting</a>
+      <a href="https://github.com/olubabs/Comparison" target="_blank">Machine Learning</a>
+    </div>
+  </section>
+
+  <!-- Overlay 1 -->
+  <div class="overlay" id="overlay1">
+    <div class="overlay-content">
+      <img src="assets/b2ca89b3266484167d65991861a75727.jpg" class="banner">
+      <h3>Comparing Sea Surface Temperature over Gulf of Guinea during Dry and Wet Year Composites</h3>
+      <p>This research investigated the influence of Sea Surface Temperature (SST) variations in the Gulf of Guinea during dry and wet year composites over West Africa. It examined precipitation patterns over West Africa relative to SST, analyzed rainfall variability to identify dry and wet years, and documented spatial and temporal SST patterns from 1981–2020 using ERA5 and CRU datasets. Five seasonal and annual SST time series were evaluated using coefficient of variation for variability and PyFerret and Python for spatial-temporal analysis. The findings provided crucial insights into climate impacts on the Gulf, supporting regional adaptation and resilience strategies.</p>
+      <a href="https://github.com/olubabs/Marine-" target="_blank">View Source Code</a>
+      <div class="slider">
+        <button class="prev">&#10094;</button>
+        <div class="slides">
+          <div class="graph-slide"><img src="assets/placeholder-graph1.jpg"><div class="graph-title">Unknown Title 1</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph2.jpg"><div class="graph-title">Unknown Title 2</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph3.jpg"><div class="graph-title">Unknown Title 3</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph4.jpg"><div class="graph-title">Unknown Title 4</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph5.jpg"><div class="graph-title">Unknown Title 5</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph6.jpg"><div class="graph-title">Unknown Title 6</div></div>
+        </div>
+        <button class="next">&#10095;</button>
+      </div>
+      <button class="close-overlay">Close</button>
+    </div>
+  </div>
+
+  <!-- Overlay 2 -->
+  <div class="overlay" id="overlay2">
+    <div class="overlay-content">
+      <img src="assets/flood.jpg" class="banner">
+      <h3>Spatio-Temporal Analysis of Flood in Lokoja, Kogi State</h3>
+      <p>This study, completed in 2023, utilized Remote Sensing and GIS to assess and analyze flood occurrences in Lokoja. It examined rainfall variability, land-use changes from 1991–2022, and flood-prone areas. Using Landsat, DEM, CRU, and POWER NASA datasets, the study rectified and geo-referenced imagery, clipped datasets to the study area, and computed a 12-month Standardized Precipitation Index for 1990–2022 to assess wetness and flood probabilities. Findings highlighted socio-economic vulnerabilities and informed strategies for sustainable flood mitigation.</p>
+      <div class="slider">
+        <button class="prev">&#10094;</button>
+        <div class="slides">
+          <div class="graph-slide"><img src="assets/placeholder-graph1.jpg"><div class="graph-title">Unknown Title 1</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph2.jpg"><div class="graph-title">Unknown Title 2</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph3.jpg"><div class="graph-title">Unknown Title 3</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph4.jpg"><div class="graph-title">Unknown Title 4</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph5.jpg"><div class="graph-title">Unknown Title 5</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph6.jpg"><div class="graph-title">Unknown Title 6</div></div>
+        </div>
+        <button class="next">&#10095;</button>
+      </div>
+      <button class="close-overlay">Close</button>
+    </div>
+  </div>
+  <!-- Overlay 3 -->
+  <div class="overlay" id="overlay3">
+    <div class="overlay-content">
+      <img src="assets/Watering Plant to Grow.jpeg" class="banner">
+      <h3>Advancing Tree Planting in Oyo State: Strategic Ecosystem Restoration</h3>
+      <p>This research assessed environmental degradation in Oyo State from 2015–2025, focusing on vegetation loss, pollution, and thermal stress. Using NDVI, LST, urban heat island analysis, air quality trends, and indigenous species evaluation, the study proposed afforestation, pollution control, sustainable urban planning, and green infrastructure strategies. It contributed actionable frameworks for policy, Gamma’s Green Agency interventions, and aligned with SDGs 3, 11, 13, and 15 to enhance resilience and community well-being.</p>
+      <div class="slider">
+        <button class="prev">&#10094;</button>
+        <div class="slides">
+          <div class="graph-slide"><img src="assets/placeholder-graph1.jpg"><div class="graph-title">Unknown Title 1</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph2.jpg"><div class="graph-title">Unknown Title 2</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph3.jpg"><div class="graph-title">Unknown Title 3</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph4.jpg"><div class="graph-title">Unknown Title 4</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph5.jpg"><div class="graph-title">Unknown Title 5</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph6.jpg"><div class="graph-title">Unknown Title 6</div></div>
+        </div>
+        <button class="next">&#10095;</button>
+      </div>
+      <button class="close-overlay">Close</button>
+    </div>
+  </div>
+
+  <!-- Overlay 4 -->
+  <div class="overlay" id="overlay4">
+    <div class="overlay-content">
+      <img src="assets/placeholder-nairobi.jpg" class="banner">
+      <h3>Air Quality in Nairobi</h3>
+      <p>This internal assignment, conducted as part of WorldQuant University coursework, focused on air quality assessment in Nairobi. It analyzed particulate and gaseous pollutants, urban sources, and mitigation strategies using statistical and visualization techniques, while respecting copyright constraints for results.</p>
+      <a href="https://github.com/olubabs/Air-Quality" target="_blank">View Source Code</a>
+      <div class="slider">
+        <button class="prev">&#10094;</button>
+        <div class="slides">
+          <div class="graph-slide"><img src="assets/placeholder-graph1.jpg"><div class="graph-title">Unknown Title 1</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph2.jpg"><div class="graph-title">Unknown Title 2</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph3.jpg"><div class="graph-title">Unknown Title 3</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph4.jpg"><div class="graph-title">Unknown Title 4</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph5.jpg"><div class="graph-title">Unknown Title 5</div></div>
+          <div class="graph-slide"><img src="assets/placeholder-graph6.jpg"><div class="graph-title">Unknown Title 6</div></div>
+        </div>
+        <button class="next">&#10095;</button>
+      </div>
+      <button class="close-overlay">Close</button>
+    </div>
+  </div>
+
+  <!-- Education Section -->
+  <section class="education fade-section" style="background:linear-gradient(135deg,#3a8dde,#1e3c72);color:#fff;padding:80px 20px;">
+    <h2 style="font-size:2rem;margin-bottom:30px;">Education & Certifications</h2>
+    <ul style="list-style:none;padding:0;font-size:1.1rem;line-height:2;">
+      <li>• Bachelor of Technology in Meteorology & Climate Science – Federal University of Technology, Akure (2024)</li>
+      <li>• Applied Data Science – WorldQuant University (Ongoing, 2025)</li>
+      <li>• Fundamental of Hydrographic Survey – International Hydrography Organization (2024)</li>
+      <li>• Green Energy Enterprise – NYSC Certificate of Training (2024)</li>
+      <li>• Digital Marketing – IIENSTITU (2025)</li>
+    </ul>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonies fade-section">
+    <h2>Testimonials</h2>
+    <div class="testimony-wrapper" id="carousel" style="display:flex;transition:transform 0.6s ease-in-out;">
+      <div class="testimony-card" style="flex:0 0 100%;padding:30px;background:#f7f7f7;border-radius:10px;text-align:center;">
+        <img src="assets/placeholder-profile.jpg" alt="Olawale" style="width:80px;height:80px;border-radius:50%;margin-bottom:15px;">
+        <p>"Olumide was a dedicated Environmental Data Analyst in our company during 2024, working on diverse environmental and energy projects. His ability to analyze data and propose innovative solutions greatly benefited Cryostar Technologies. His growth mindset and passion made him invaluable to our team."</p>
+        <span>- Odeyemi Olawale, CEO, Cryostar Technologies</span>
+      </div>
+      <div class="testimony-card" style="flex:0 0 100%;padding:30px;background:#f7f7f7;border-radius:10px;text-align:center;">
+        <img src="assets/placeholder-profile.jpg" alt="Ayodele" style="width:80px;height:80px;border-radius:50%;margin-bottom:15px;">
+        <p>"Olumide isn’t just my son, but a hardworking and innovative young man who transformed my palm oil farm. By applying remote monitoring and data-driven practices, he boosted yield and efficiency, and I’m proud of his vision and dedication to progress."</p>
+        <span>- Babalola Ayodele Sunday, Retired Teacher & Palm Oil Farmer</span>
+      </div>
+    </div>
+    <div class="carousel-controls" style="text-align:center;margin-top:15px;">
+      <button id="prevBtn" style="padding:10px 20px;background:#333;color:#fff;border:none;border-radius:5px;cursor:pointer;">Prev</button>
+      <button id="nextBtn" style="padding:10px 20px;background:#333;color:#fff;border:none;border-radius:5px;cursor:pointer;">Next</button>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact fade-section" id="contact" style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;justify-content:center;">
+    <div style="flex:1;min-width:300px;text-align:center;">
+      <h2>Contact Me</h2>
+      <p style="font-size:1.2rem;margin:15px 0;">Primary WhatsApp: +2349158715002</p>
+      <p style="font-size:1rem;margin-bottom:20px;">Call: +2347075423851</p>
+      <div style="margin-top:10px;">
+        <a href="mailto:babalolaolumide2@gmail.com" style="display:inline-block;margin:5px;padding:12px 20px;background:#4cafef;color:#fff;border-radius:6px;text-decoration:none;font-weight:bold;">Email</a>
+        <a href="https://x.com/_Gamma_Rc_" target="_blank" style="display:inline-block;margin:5px;padding:12px 20px;background:#4cafef;color:#fff;border-radius:6px;text-decoration:none;font-weight:bold;">Twitter</a>
+        <a href="https://wa.me/2349158715002" target="_blank" style="display:inline-block;margin:5px;padding:12px 20px;background:#4cafef;color:#fff;border-radius:6px;text-decoration:none;font-weight:bold;">WhatsApp</a>
+      </div>
+    </div>
+    <!-- Fancy Dialog Box -->
+    <form action="https://formspree.io/f/mayvlrrk" method="POST" 
+      style="max-width:600px;width:90%;background:rgba(255,255,255,0.95);backdrop-filter:blur(6px);padding:40px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.15);margin-top:20px;">
+      <div style="margin-bottom:25px;position:relative;">
+        <input type="text" name="name" required 
+          style="width:100%;padding:15px 15px 5px;border:1px solid #ccc;border-radius:6px;font-size:16px;background:none;">
+        <label style="position:absolute;top:12px;left:15px;color:#aaa;font-size:14px;transition:0.3s;">Your Name</label>
+      </div>
+      <div style="margin-bottom:25px;position:relative;">
+        <input type="email" name="email" required 
+          style="width:100%;padding:15px 15px 5px;border:1px solid #ccc;border-radius:6px;font-size:16px;background:none;">
+        <label style="position:absolute;top:12px;left:15px;color:#aaa;font-size:14px;transition:0.3s;">Your Email</label>
+      </div>
+      <div style="margin-bottom:25px;position:relative;">
+        <textarea name="message" rows="5" required 
+          style="width:100%;padding:15px 15px 5px;border:1px solid #ccc;border-radius:6px;font-size:16px;background:none;resize:none;"></textarea>
+        <label style="position:absolute;top:12px;left:15px;color:#aaa;font-size:14px;transition:0.3s;">Your Message</label>
+      </div>
+      <button type="submit" 
+        style="width:100%;padding:15px;background:#4cafef;color:#fff;font-size:18px;border:none;border-radius:8px;cursor:pointer;transition:background 0.3s;">
+        Send Message
+      </button>
+    </form>
+  </section>
+
+  <!-- CV Download -->
+  <section class="cv fade-section" id="cv" style="text-align:center;">
+    <h2>Download My CV</h2>
+    <a href="assets/Babalola-Elijah-CV.pdf" download style="display:inline-block;padding:15px 30px;background:#4cafef;color:#fff;border-radius:8px;text-decoration:none;transition:background 0.3s;">Download CV</a>
+  </section>
+
+  <!-- Back to Top -->
+  <button id="backToTop" style="position:fixed;bottom:30px;right:30px;background:#4cafef;color:#fff;border:none;padding:15px;border-radius:50%;cursor:pointer;display:none;z-index:1500;box-shadow:0 5px 15px rgba(0,0,0,0.2);">&#8679;</button>
+
+  <!-- Scripts -->
+  <script>
+    // Typing Effect (slow + pause)
+    const textArray=["Data Analyst","Environmental and Climate Scientist","Research Enthusiast"];
+    let index=0,charIndex=0,isDeleting=false,currentText="";
+    function type(){const el=document.getElementById("typing-text");if(charIndex===0&&!isDeleting)currentText=textArray[index];el.textContent=currentText.substring(0,charIndex);if(!isDeleting){if(charIndex<currentText.length){charIndex++;}else{isDeleting=true;setTimeout(type,2000);return;}}else{if(charIndex>0){charIndex--;}else{isDeleting=false;index=(index+1)%textArray.length;}}setTimeout(type,isDeleting?80:120);}
+    document.addEventListener("DOMContentLoaded",type);
+
+    // Fade animation on scroll
+    const sections=document.querySelectorAll('section');
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){e.target.classList.add('visible');}
+        else{e.target.classList.remove('visible');}
+      });
+    },{threshold:0.1});
+    sections.forEach(s=>obs.observe(s));
+
+    // Hero Flip
+    window.addEventListener('scroll',()=>document.body.classList.toggle('scrolled',window.scrollY>100));
+
+    // Skills Animation
+    const skillBars=document.querySelectorAll('.skill-bar');
+    const skillObs=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const fill=entry.target.querySelector('.bar-fill');
+          const txt=entry.target.querySelector('.level-text');
+          const lvl=entry.target.dataset.level;
+          let w={Expert:"90%",Advanced:"75%",Intermediate:"60%"}[lvl];
+          fill.style.width=w;
+          setTimeout(()=>{fill.classList.add('animate');txt.textContent=lvl;},1200);
+        }
+      });
+    },{threshold:0.5});
+    skillBars.forEach(b=>skillObs.observe(b));
+
+    // Testimonials Slider
+    const carousel=document.getElementById('carousel');const slides=document.querySelectorAll('.testimony-card');
+    let cIndex=0,autoSlide;
+    function showSlide(i){carousel.style.transform=`translateX(-${i*100}%)`;}
+    function startAuto(){autoSlide=setInterval(()=>{cIndex=(cIndex+1)%slides.length;showSlide(cIndex);},5000);}
+    function stopAuto(){clearInterval(autoSlide);}
+    document.getElementById('nextBtn').onclick=()=>{stopAuto();cIndex=(cIndex+1)%slides.length;showSlide(cIndex);startAuto();};
+    document.getElementById('prevBtn').onclick=()=>{stopAuto();cIndex=(cIndex-1+slides.length)%slides.length;showSlide(cIndex);startAuto();};
+    slides.forEach(s=>s.addEventListener('click',()=>stopAuto()));startAuto();
+
+    // Project Overlays
+    const overlays=document.querySelectorAll('.overlay');
+    document.querySelectorAll('.project-card[data-overlay]').forEach(card=>{
+      card.addEventListener('click',()=>{document.getElementById(card.dataset.overlay).classList.add('active');document.body.classList.add('overlay-open');});
+    });
+    document.querySelectorAll('.close-overlay').forEach(btn=>{
+      btn.addEventListener('click',()=>{btn.closest('.overlay').classList.remove('active');document.body.classList.remove('overlay-open');});
+    });
+
+    // Graph Sliders (autoplay + stop on click)
+    document.querySelectorAll('.overlay').forEach(overlay=>{
+      const slides=overlay.querySelector('.slides');const slideItems=overlay.querySelectorAll('.graph-slide');
+      let idx=0,auto;
+      function move(){slides.style.transform=`translateX(-${idx*100}%)`;}
+      function start(){auto=setInterval(()=>{idx=(idx+1)%slideItems.length;move();},4000);}
+      function stop(){clearInterval(auto);}
+      overlay.querySelector('.next').onclick=()=>{stop();idx=(idx+1)%slideItems.length;move();start();};
+      overlay.querySelector('.prev').onclick=()=>{stop();idx=(idx-1+slideItems.length)%slideItems.length;move();start();};
+      slideItems.forEach(s=>s.addEventListener('click',()=>stop()));start();
+    });
+
+    // Back to Top Button
+    const backBtn=document.getElementById('backToTop');
+    window.addEventListener('scroll',()=>backBtn.style.display=window.scrollY>300?'block':'none');
+    backBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  </script>
+</body>
+</html>

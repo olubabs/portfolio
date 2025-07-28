@@ -19,30 +19,20 @@
     body.scrolled .hero-content{transform:rotateX(-90deg);opacity:0}
     .hero h1{font-size:3rem;margin-bottom:20px}
     .hero p{font-size:1.5rem}
-
-    /* About */
     .about img{width:150px;border-radius:50%;display:block;margin:0 auto 20px;box-shadow:0 0 10px rgba(0,0,0,.2)}
-
-    /* Skills */
     .skills .skill-bar{margin:20px 0}
     .skills .bar{position:relative;height:22px;background:#e0e0e0;border-radius:10px;overflow:hidden}
     .skills .bar-fill{height:100%;width:0;background:#4cafef;transition:width 1.8s ease-in-out}
     .skills .level-text{position:absolute;right:10px;top:0;height:100%;display:flex;align-items:center;font-weight:bold;opacity:0;transform:scale(.8);transition:opacity .5s ease,transform .5s ease}
     .skills .bar-fill.animate + .level-text{opacity:1;transform:scale(1)}
-
-    /* Projects Grid */
     .project-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
     .project-card{position:relative;flex:1 1 calc(50% - 40px);min-width:280px;cursor:pointer;overflow:hidden;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,.1);transition:transform .3s}
     .project-card img{width:100%;height:250px;object-fit:cover;border-radius:10px;transition:transform .3s}
     .project-card:hover{transform:scale(1.03)}
     .project-card span{position:absolute;bottom:10px;left:10px;color:#fff;background:rgba(0,0,0,.6);padding:8px 12px;border-radius:5px;font-weight:bold}
-
-    /* Extra Projects (GitHub Buttons) */
     .other-projects{text-align:center;margin-top:30px}
     .other-projects a{display:inline-block;margin:10px;padding:12px 20px;background:#4cafef;color:#fff;text-decoration:none;border-radius:8px;font-weight:bold;transition:background .3s}
     .other-projects a:hover{background:#388bd1}
-
-    /* Overlay Container */
     .overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);display:flex;justify-content:center;align-items:flex-start;opacity:0;visibility:hidden;transition:opacity .5s;z-index:2000;overflow-y:auto}
     .overlay.active{opacity:1;visibility:visible}
     body.overlay-open{overflow:hidden}
@@ -53,8 +43,6 @@
     .overlay p{margin-bottom:20px;line-height:1.6}
     .overlay a{color:#4cafef;text-decoration:none;font-weight:bold}
     .close-overlay{display:block;margin-top:20px;padding:10px 20px;background:#4cafef;color:#fff;border:none;border-radius:5px;cursor:pointer}
-
-    /* Sliders */
     .slider{position:relative;overflow:hidden;margin-top:20px;border-radius:10px}
     .slides{display:flex;transition:transform .5s ease-in-out}
     .graph-slide{flex:0 0 100%;text-align:center}
@@ -65,7 +53,6 @@
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <nav>
     <a href="#hero">Home</a>
     <a href="#projects">Projects</a>
@@ -102,39 +89,36 @@
     <div class="skill-bar" data-level="Expert"><span>Hydrognomon</span><div class="bar"><div class="bar-fill"></div><span class="level-text"></span></div></div>
   </section>
 
-  <!-- Projects -->
+  <!-- Projects Section -->
   <section class="projects fade-section" id="projects">
     <h2>Projects</h2>
     <div class="project-grid">
       <div class="project-card" data-overlay="overlay1"><img src="assets/b2ca89b3266484167d65991861a75727.jpg"><span>Sea Surface Temperature (Gulf of Guinea)</span></div>
       <div class="project-card" data-overlay="overlay2"><img src="assets/flood.jpg"><span>Spatio-Temporal Flood Analysis in Lokoja</span></div>
       <div class="project-card" data-overlay="overlay3"><img src="assets/Watering Plant to Grow.jpeg"><span>Advancing Tree Planting in Oyo State</span></div>
-      <div class="project-card" data-overlay="overlay4"><img src="assets/placeholder-nairobi.jpg"><span>Air Quality in Nairobi</span></div>
+      <div class="project-card" data-overlay="overlay4"><img src="assets/airQ-nairobi.jpg"><span>Air Quality in Nairobi</span></div>
     </div>
-
-    <!-- Other Projects -->
     <div class="other-projects">
       <a href="https://github.com/olubabs/AutoRegressive-Integrated-Moving-Average-ARIMA-" target="_blank">ARIMA Forecasting</a>
       <a href="https://github.com/olubabs/Comparison" target="_blank">Machine Learning</a>
     </div>
   </section>
-
   <!-- Overlay 1 -->
   <div class="overlay" id="overlay1">
     <div class="overlay-content">
       <img src="assets/b2ca89b3266484167d65991861a75727.jpg" class="banner">
       <h3>Comparing Sea Surface Temperature over Gulf of Guinea during Dry and Wet Year Composites</h3>
-      <p>This research investigated the influence of Sea Surface Temperature (SST) variations in the Gulf of Guinea during dry and wet year composites over West Africa. It examined precipitation patterns over West Africa relative to SST, analyzed rainfall variability to identify dry and wet years, and documented spatial and temporal SST patterns from 1981–2020 using ERA5 and CRU datasets. Five seasonal and annual SST time series were evaluated using coefficient of variation for variability and PyFerret and Python for spatial-temporal analysis. The findings provided crucial insights into climate impacts on the Gulf, supporting regional adaptation and resilience strategies.</p>
+      <p>This research investigated the influence of Sea Surface Temperature (SST) variations in the Gulf of Guinea during dry and wet year composites over West Africa. It examined precipitation patterns relative to SST, analyzed rainfall variability to identify dry and wet years, and documented spatial and temporal SST patterns from 1981–2020 using ERA5 and CRU datasets. Five seasonal and annual SST time series were evaluated using coefficient of variation for variability, and PyFerret and Python for spatial-temporal analysis. The findings provided crucial insights into climate impacts on the Gulf, supporting regional adaptation and resilience strategies.</p>
       <a href="https://github.com/olubabs/Marine-" target="_blank">View Source Code</a>
       <div class="slider">
         <button class="prev">&#10094;</button>
         <div class="slides">
-          <div class="graph-slide"><img src="assets/placeholder-graph1.jpg"><div class="graph-title">Unknown Title 1</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph2.jpg"><div class="graph-title">Unknown Title 2</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph3.jpg"><div class="graph-title">Unknown Title 3</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph4.jpg"><div class="graph-title">Unknown Title 4</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph5.jpg"><div class="graph-title">Unknown Title 5</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph6.jpg"><div class="graph-title">Unknown Title 6</div></div>
+          <div class="graph-slide"><img src="assets/sst-graph1.jpg"><div class="graph-title">Unknown Title 1</div></div>
+          <div class="graph-slide"><img src="assets/sst-graph2.jpg"><div class="graph-title">Unknown Title 2</div></div>
+          <div class="graph-slide"><img src="assets/sst-graph3.jpg"><div class="graph-title">Unknown Title 3</div></div>
+          <div class="graph-slide"><img src="assets/sst-graph4.jpg"><div class="graph-title">Unknown Title 4</div></div>
+          <div class="graph-slide"><img src="assets/sst-graph5.jpg"><div class="graph-title">Unknown Title 5</div></div>
+          <div class="graph-slide"><img src="assets/sst-graph6.jpg"><div class="graph-title">Unknown Title 6</div></div>
         </div>
         <button class="next">&#10095;</button>
       </div>
@@ -151,18 +135,17 @@
       <div class="slider">
         <button class="prev">&#10094;</button>
         <div class="slides">
-          <div class="graph-slide"><img src="assets/placeholder-graph1.jpg"><div class="graph-title">Unknown Title 1</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph2.jpg"><div class="graph-title">Unknown Title 2</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph3.jpg"><div class="graph-title">Unknown Title 3</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph4.jpg"><div class="graph-title">Unknown Title 4</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph5.jpg"><div class="graph-title">Unknown Title 5</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph6.jpg"><div class="graph-title">Unknown Title 6</div></div>
+          <div class="graph-slide"><img src="assets/flood-graph1.jpg"><div class="graph-title">Unknown Title 1</div></div>
+          <div class="graph-slide"><img src="assets/flood-graph2.jpg"><div class="graph-title">Unknown Title 2</div></div>
+          <div class="graph-slide"><img src="assets/flood-graph3.jpg"><div class="graph-title">Unknown Title 3</div></div>
+          <div class="graph-slide"><img src="assets/flood-graph4.jpg"><div class="graph-title">Unknown Title 4</div></div>
         </div>
         <button class="next">&#10095;</button>
       </div>
       <button class="close-overlay">Close</button>
     </div>
   </div>
+
   <!-- Overlay 3 -->
   <div class="overlay" id="overlay3">
     <div class="overlay-content">
@@ -172,12 +155,10 @@
       <div class="slider">
         <button class="prev">&#10094;</button>
         <div class="slides">
-          <div class="graph-slide"><img src="assets/placeholder-graph1.jpg"><div class="graph-title">Unknown Title 1</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph2.jpg"><div class="graph-title">Unknown Title 2</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph3.jpg"><div class="graph-title">Unknown Title 3</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph4.jpg"><div class="graph-title">Unknown Title 4</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph5.jpg"><div class="graph-title">Unknown Title 5</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph6.jpg"><div class="graph-title">Unknown Title 6</div></div>
+          <div class="graph-slide"><img src="assets/tree-graph1.jpg"><div class="graph-title">Unknown Title 1</div></div>
+          <div class="graph-slide"><img src="assets/tree-graph2.jpg"><div class="graph-title">Unknown Title 2</div></div>
+          <div class="graph-slide"><img src="assets/tree-graph3.jpg"><div class="graph-title">Unknown Title 3</div></div>
+          <div class="graph-slide"><img src="assets/tree-graph4.jpg"><div class="graph-title">Unknown Title 4</div></div>
         </div>
         <button class="next">&#10095;</button>
       </div>
@@ -188,19 +169,17 @@
   <!-- Overlay 4 -->
   <div class="overlay" id="overlay4">
     <div class="overlay-content">
-      <img src="assets/placeholder-nairobi.jpg" class="banner">
+      <img src="assets/airQ-nairobi.jpg" class="banner">
       <h3>Air Quality in Nairobi</h3>
       <p>This internal assignment, conducted as part of WorldQuant University coursework, focused on air quality assessment in Nairobi. It analyzed particulate and gaseous pollutants, urban sources, and mitigation strategies using statistical and visualization techniques, while respecting copyright constraints for results.</p>
       <a href="https://github.com/olubabs/Air-Quality" target="_blank">View Source Code</a>
       <div class="slider">
         <button class="prev">&#10094;</button>
         <div class="slides">
-          <div class="graph-slide"><img src="assets/placeholder-graph1.jpg"><div class="graph-title">Unknown Title 1</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph2.jpg"><div class="graph-title">Unknown Title 2</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph3.jpg"><div class="graph-title">Unknown Title 3</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph4.jpg"><div class="graph-title">Unknown Title 4</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph5.jpg"><div class="graph-title">Unknown Title 5</div></div>
-          <div class="graph-slide"><img src="assets/placeholder-graph6.jpg"><div class="graph-title">Unknown Title 6</div></div>
+          <div class="graph-slide"><img src="assets/AQ1.jpg"><div class="graph-title">Unknown Title 1</div></div>
+          <div class="graph-slide"><img src="assets/AQ2.jpg"><div class="graph-title">Unknown Title 2</div></div>
+          <div class="graph-slide"><img src="assets/AQ3.jpg"><div class="graph-title">Unknown Title 3</div></div>
+          <div class="graph-slide"><img src="assets/AQ4.jpg"><div class="graph-title">Unknown Title 4</div></div>
         </div>
         <button class="next">&#10095;</button>
       </div>
@@ -219,18 +198,17 @@
       <li>• Digital Marketing – IIENSTITU (2025)</li>
     </ul>
   </section>
-
   <!-- Testimonials -->
   <section class="testimonies fade-section">
     <h2>Testimonials</h2>
     <div class="testimony-wrapper" id="carousel" style="display:flex;transition:transform 0.6s ease-in-out;">
       <div class="testimony-card" style="flex:0 0 100%;padding:30px;background:#f7f7f7;border-radius:10px;text-align:center;">
-        <img src="assets/placeholder-profile.jpg" alt="Olawale" style="width:80px;height:80px;border-radius:50%;margin-bottom:15px;">
+        <img src="assets/testimony1.jpg" alt="Olawale" style="width:80px;height:80px;border-radius:50%;margin-bottom:15px;">
         <p>"Olumide was a dedicated Environmental Data Analyst in our company during 2024, working on diverse environmental and energy projects. His ability to analyze data and propose innovative solutions greatly benefited Cryostar Technologies. His growth mindset and passion made him invaluable to our team."</p>
         <span>- Odeyemi Olawale, CEO, Cryostar Technologies</span>
       </div>
       <div class="testimony-card" style="flex:0 0 100%;padding:30px;background:#f7f7f7;border-radius:10px;text-align:center;">
-        <img src="assets/placeholder-profile.jpg" alt="Ayodele" style="width:80px;height:80px;border-radius:50%;margin-bottom:15px;">
+        <img src="assets/testimony2.jpg" alt="Ayodele" style="width:80px;height:80px;border-radius:50%;margin-bottom:15px;">
         <p>"Olumide isn’t just my son, but a hardworking and innovative young man who transformed my palm oil farm. By applying remote monitoring and data-driven practices, he boosted yield and efficiency, and I’m proud of his vision and dedication to progress."</p>
         <span>- Babalola Ayodele Sunday, Retired Teacher & Palm Oil Farmer</span>
       </div>
@@ -292,7 +270,19 @@
     // Typing Effect (slow + pause)
     const textArray=["Data Analyst","Environmental and Climate Scientist","Research Enthusiast"];
     let index=0,charIndex=0,isDeleting=false,currentText="";
-    function type(){const el=document.getElementById("typing-text");if(charIndex===0&&!isDeleting)currentText=textArray[index];el.textContent=currentText.substring(0,charIndex);if(!isDeleting){if(charIndex<currentText.length){charIndex++;}else{isDeleting=true;setTimeout(type,2000);return;}}else{if(charIndex>0){charIndex--;}else{isDeleting=false;index=(index+1)%textArray.length;}}setTimeout(type,isDeleting?80:120);}
+    function type(){
+      const el=document.getElementById("typing-text");
+      if(charIndex===0&&!isDeleting)currentText=textArray[index];
+      el.textContent=currentText.substring(0,charIndex);
+      if(!isDeleting){
+        if(charIndex<currentText.length){charIndex++;}
+        else{isDeleting=true;setTimeout(type,2000);return;}
+      }else{
+        if(charIndex>0){charIndex--;}
+        else{isDeleting=false;index=(index+1)%textArray.length;}
+      }
+      setTimeout(type,isDeleting?80:120);
+    }
     document.addEventListener("DOMContentLoaded",type);
 
     // Fade animation on scroll
@@ -324,7 +314,7 @@
     },{threshold:0.5});
     skillBars.forEach(b=>skillObs.observe(b));
 
-    // Testimonials Slider
+    // Testimonials Slider (autoplay + stop when clicked)
     const carousel=document.getElementById('carousel');const slides=document.querySelectorAll('.testimony-card');
     let cIndex=0,autoSlide;
     function showSlide(i){carousel.style.transform=`translateX(-${i*100}%)`;}
@@ -337,10 +327,16 @@
     // Project Overlays
     const overlays=document.querySelectorAll('.overlay');
     document.querySelectorAll('.project-card[data-overlay]').forEach(card=>{
-      card.addEventListener('click',()=>{document.getElementById(card.dataset.overlay).classList.add('active');document.body.classList.add('overlay-open');});
+      card.addEventListener('click',()=>{
+        document.getElementById(card.dataset.overlay).classList.add('active');
+        document.body.classList.add('overlay-open');
+      });
     });
     document.querySelectorAll('.close-overlay').forEach(btn=>{
-      btn.addEventListener('click',()=>{btn.closest('.overlay').classList.remove('active');document.body.classList.remove('overlay-open');});
+      btn.addEventListener('click',()=>{
+        btn.closest('.overlay').classList.remove('active');
+        document.body.classList.remove('overlay-open');
+      });
     });
 
     // Graph Sliders (autoplay + stop on click)

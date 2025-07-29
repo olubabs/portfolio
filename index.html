@@ -218,44 +218,71 @@
       <button id="nextBtn" style="padding:10px 20px;background:#333;color:#fff;border:none;border-radius:5px;cursor:pointer;">Next</button>
     </div>
   </section>
-
   <!-- Contact -->
-  <section class="contact fade-section" id="contact" style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;justify-content:center;">
-    <div style="flex:1;min-width:300px;text-align:center;">
-      <h2>Contact Me</h2>
-      <p style="font-size:1.2rem;margin:15px 0;">Primary WhatsApp: +2349158715002</p>
-      <p style="font-size:1rem;margin-bottom:20px;">Call: +2347075423851</p>
-      <div style="margin-top:10px;">
-        <a href="mailto:babalolaolumide2@gmail.com" style="display:inline-block;margin:5px;padding:12px 20px;background:#4cafef;color:#fff;border-radius:6px;text-decoration:none;font-weight:bold;">Email</a>
-        <a href="https://x.com/_Gamma_Rc_" target="_blank" style="display:inline-block;margin:5px;padding:12px 20px;background:#4cafef;color:#fff;border-radius:6px;text-decoration:none;font-weight:bold;">Twitter</a>
-        <a href="https://wa.me/2349158715002" target="_blank" style="display:inline-block;margin:5px;padding:12px 20px;background:#4cafef;color:#fff;border-radius:6px;text-decoration:none;font-weight:bold;">WhatsApp</a>
-      </div>
+<section class="contact fade-section" id="contact" style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;justify-content:center;">
+  <div style="flex:1;min-width:300px;text-align:center;">
+    <h2>Contact Me</h2>
+    <p style="font-size:1.2rem;margin:15px 0;">Primary WhatsApp: +2349158715002</p>
+    <p style="font-size:1rem;margin-bottom:20px;">Call: +2347075423851</p>
+    <div style="margin-top:10px;">
+      <!-- Clickable buttons -->
+      <a href="mailto:babalolaolumide2@gmail.com" 
+         style="display:inline-block;margin:5px;padding:12px 20px;background:#4cafef;color:#fff;border-radius:6px;text-decoration:none;font-weight:bold;">
+         Email
+      </a>
+      <a href="https://x.com/_Gamma_Rc_" target="_blank" 
+         style="display:inline-block;margin:5px;padding:12px 20px;background:#4cafef;color:#fff;border-radius:6px;text-decoration:none;font-weight:bold;">
+         Twitter
+      </a>
+      <a href="https://wa.me/2349158715002" target="_blank" 
+         style="display:inline-block;margin:5px;padding:12px 20px;background:#4cafef;color:#fff;border-radius:6px;text-decoration:none;font-weight:bold;">
+         WhatsApp
+      </a>
     </div>
-    <!-- Fancy Dialog Box -->
-    <form action="https://formspree.io/f/mayvlrrk" method="POST" 
-      style="max-width:600px;width:90%;background:rgba(255,255,255,0.95);backdrop-filter:blur(6px);padding:40px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.15);margin-top:20px;">
-      <div style="margin-bottom:25px;position:relative;">
-        <input type="text" name="name" required 
-          style="width:100%;padding:15px 15px 5px;border:1px solid #ccc;border-radius:6px;font-size:16px;background:none;">
-        <label style="position:absolute;top:12px;left:15px;color:#aaa;font-size:14px;transition:0.3s;">Your Name</label>
-      </div>
-      <div style="margin-bottom:25px;position:relative;">
-        <input type="email" name="email" required 
-          style="width:100%;padding:15px 15px 5px;border:1px solid #ccc;border-radius:6px;font-size:16px;background:none;">
-        <label style="position:absolute;top:12px;left:15px;color:#aaa;font-size:14px;transition:0.3s;">Your Email</label>
-      </div>
-      <div style="margin-bottom:25px;position:relative;">
-        <textarea name="message" rows="5" required 
-          style="width:100%;padding:15px 15px 5px;border:1px solid #ccc;border-radius:6px;font-size:16px;background:none;resize:none;"></textarea>
-        <label style="position:absolute;top:12px;left:15px;color:#aaa;font-size:14px;transition:0.3s;">Your Message</label>
-      </div>
-      <button type="submit" 
-        style="width:100%;padding:15px;background:#4cafef;color:#fff;font-size:18px;border:none;border-radius:8px;cursor:pointer;transition:background 0.3s;">
-        Send Message
-      </button>
-    </form>
-  </section>
+  </div>
 
+  <!-- Fancy Dialog Box (Mailto) -->
+  <form onsubmit="sendEmail(event)" 
+    style="max-width:600px;width:90%;background:rgba(255,255,255,0.95);backdrop-filter:blur(6px);padding:40px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.15);margin-top:20px;">
+    <div style="margin-bottom:25px;position:relative;">
+      <input type="text" id="name" required 
+        style="width:100%;padding:15px 15px 5px;border:1px solid #ccc;border-radius:6px;font-size:16px;background:none;">
+      <label style="position:absolute;top:12px;left:15px;color:#aaa;font-size:14px;transition:0.3s;">Your Name</label>
+    </div>
+    <div style="margin-bottom:25px;position:relative;">
+      <input type="email" id="email" required 
+        style="width:100%;padding:15px 15px 5px;border:1px solid #ccc;border-radius:6px;font-size:16px;background:none;">
+      <label style="position:absolute;top:12px;left:15px;color:#aaa;font-size:14px;transition:0.3s;">Your Email</label>
+    </div>
+    <div style="margin-bottom:25px;position:relative;">
+      <textarea id="message" rows="5" required 
+        style="width:100%;padding:15px 15px 5px;border:1px solid #ccc;border-radius:6px;font-size:16px;background:none;resize:none;"></textarea>
+      <label style="position:absolute;top:12px;left:15px;color:#aaa;font-size:14px;transition:0.3s;">Your Message</label>
+    </div>
+    <button type="submit" 
+      style="width:100%;padding:15px;background:#4cafef;color:#fff;font-size:18px;border:none;border-radius:8px;cursor:pointer;transition:background 0.3s;">
+      Send Message
+    </button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer style="text-align:center;padding:20px;background:#f1f1f1;color:#555;font-size:14px;margin-top:40px;">
+  &copy; 2025 Babalola Elijah Olumide. All rights reserved.
+</footer>
+
+<script>
+  // Send email via mailto
+  function sendEmail(event){
+    event.preventDefault();
+    const name=document.getElementById('name').value;
+    const email=document.getElementById('email').value;
+    const message=document.getElementById('message').value;
+    const subject=`Message from ${name}`;
+    const body=`Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`;
+    window.location.href=`mailto:babalolaolumide2@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+  }
+  </script>
   <!-- CV Download -->
   <section class="cv fade-section" id="cv" style="text-align:center;">
     <h2>Download My CV</h2>

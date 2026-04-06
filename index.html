@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Elijah Babalola</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0b0b0f;
+    color:white;
+}
+
+
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:999;
+    background:rgba(20,20,25,0.35);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:18px;
+    letter-spacing:2px;
+    color:#c6a96b;
+}
+
+.nav-links a{
+    color:#ddd;
+    text-decoration:none;
+    margin-left:28px;
+    font-size:13px;
+    letter-spacing:1px;
+    transition:0.3s;
+    z-index:10000;
+}
+
+.nav-links a:hover{
+    color:#c6a96b;
+}
+
+
+
+/* HERO */
+.hero{
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+    z-index:1;
+}
+
+
+/* SLIDES */
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+    opacity:0;
+    transform:scale(1.15);
+    transition:opacity 1.8s ease, transform 6s ease;
+    z-index:0;
+}
+
+.slide.active{
+    opacity:1;
+    transform:scale(1);
+}
+
+
+/* DARK CINEMATIC OVERLAY */
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to right,
+        rgba(0,0,0,0.85) 20%,
+        rgba(0,0,0,0.65) 50%,
+        rgba(0,0,0,0.85) 100%
+    );
+    z-index:1;
+}
+
+/* CONTENT */
+
+.hero-content{
+    position:absolute;
+    top:50%;
+    left:10%;
+    transform:translateY(-50%);
+    z-index:2;
+    max-width:600px;
+}
+
+
+/* NAME */
+
+.name{
+    font-family:'Playfair Display',serif;
+    font-size:4.2rem;
+    line-height:1.05;
+    letter-spacing:2px;
+    color:#f5f5f5;
+    text-shadow:0 0 20px rgba(198,169,107,0.15);
+}
+
+.name span{
+    display:block;
+}
+
+
+/* ROLE */
+
+.role{
+    margin-top:18px;
+    font-size:1.15rem;
+    letter-spacing:3px;
+    color:#c6a96b;
+    opacity:0;
+    transform:translateY(10px);
+    transition:0.6s;
+}
+
+.role.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* BUTTONS */
+
+.hero-buttons{
+    margin-top:35px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.hero-buttons a{
+    text-decoration:none;
+    padding:12px 28px;
+    margin-right:15px;
+    border-radius:30px;
+    font-size:0.85rem;
+    letter-spacing:1px;
+    transition:0.3s;
+}
+
+
+/* PRIMARY */
+
+.btn-primary{
+    background:#c6a96b;
+    color:black;
+}
+
+.btn-primary:hover{
+    background:#e0c48a;
+    transform:translateY(-2px);
+}
+
+
+/* OUTLINE */
+
+.btn-outline{
+    border:1px solid #c6a96b;
+    color:#c6a96b;
+}
+
+.btn-outline:hover{
+    background:#c6a96b;
+    color:black;
+    transform:translateY(-2px);
+}
+
+
+/* SOCIAL */
+
+.social{
+    margin-top:45px;
+}
+
+.social a{
+    margin-right:18px;
+    font-size:14px;
+    color:#aaa;
+    text-decoration:none;
+    letter-spacing:1px;
+    transition:0.3s;
+}
+
+.social a:hover{
+    color:#c6a96b;
+}
+
+/* PROFILE LINKS */
+.profile-links{
+    padding:60px 8%;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    z-index:10001; /* On top of overlays */
+    position:relative;
+}
+
+.profile-btn{
+    text-decoration:none;
+    padding:12px 25px;
+    background:#111;
+    color:#fff;
+    border-radius:12px;
+    transition:0.3s;
+    display:inline-block;
+}
+
+.profile-btn:hover{
+    background:#c6a96b;
+    color:black;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    padding:120px 8%;
+    position:relative;
+    background:url('assets/mypic.jpg') center/cover no-repeat;
+}
+
+.about::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.85);
+}
+
+.about-container{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about-image img{
+    width:100%;
+    border-radius:12px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.6);
+}
+
+.about-text h2{
+    font-family:'Playfair Display',serif;
+    font-size:2.5rem;
+    margin-bottom:20px;
+    color:#c6a96b;
+}
+
+.about-text p{
+    line-height:1.8;
+    margin-bottom:20px;
+    color:#ddd;
+    text-align:justify;
+}
+
+.about-text span{
+    color:#c6a96b;
+    font-weight:500;
+}
+
+.signature{
+    margin-top:25px;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    color:#c6a96b;
+    opacity:0.9;
+}
+
+
+/* ================= SKILLS ================= */
+
+
+/* SECTION */
+
+.skills-section{
+    position:relative;
+    padding:120px 8%;
+    background:url('assets/skills.jfif') center/cover no-repeat;
+    color:white;
+}
+
+.skills-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.88);
+}
+
+.skills-container{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:60px;
+}
+
+/* COLUMN */
+
+.column h3{
+    font-family:'Playfair Display',serif;
+    color:#c6a96b;
+    margin-bottom:20px;
+    font-size:1.4rem;
+}
+
+.column ul{
+    list-style:none;
+    padding:0;
+}
+
+.column ul li{
+    margin-bottom:12px;
+    color:#ddd;
+    line-height:1.6;
+}
+
+.column a{
+    color:#c6a96b;
+    font-size:0.9rem;
+    text-decoration:none;
+}
+
+.column a:hover{
+    text-decoration:underline;
+}
+
+
+/* SKILL BARS */
+
+.skill{
+    margin-bottom:18px;
+}
+
+.skill span{
+    font-size:0.9rem;
+    color:#ddd;
+}
+
+.bar{
+    width:100%;
+    height:6px;
+    background:#333;
+    border-radius:10px;
+    margin-top:6px;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    width:0;
+    background:#c6a96b;
+    border-radius:10px;
+    transition:width 1.8s ease;
+}
+
+
+/* ================= RECOMMENDATIONS ================= */
+.recommendations{
+    padding:120px 8%;
+    position:relative;
+    background:#111;
+    z-index:2;
+}
+
+.rec-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+    gap:30px;
+}
+
+.rec-card{
+    background:#1a1a1a;
+    padding:20px;
+    border-radius:12px;
+    display:flex;
+    gap:15px;
+    flex-direction:column;
+}
+
+.rec-card img{
+    width:100%;
+    border-radius:10px;
+    max-height:200px;
+    object-fit:cover;
+}
+
+.rec-text{
+    flex:1;
+}
+
+.rec-text h3{
+    color:#c6a96b;
+    margin-bottom:5px;
+}
+
+.rec-text span{
+    font-size:0.85rem;
+    color:#aaa;
+}
+
+.rec-text p{
+    margin-top:10px;
+    line-height:1.6;
+    color:#ddd;
+    text-align:justify;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+    .about-container{
+        grid-template-columns:1fr;
+    }
+
+    .about-image{
+        order:-1;
+    }
+
+    .name{
+        font-size:2.5rem;
+    }
+
+    .hero-content{
+        left:7%;
+    }
+
+    .skills-container{
+        grid-template-columns:1fr;
+    }
+
+    .rec-card{
+        flex-direction:column;
+    	align-items:center;
+    	text-align:center;
+    }
+
+    .rec-card img{
+    	width:100px;
+    	height:100px;
+    }
+    .rec-text p{
+        text-align:justify;
+    }
+
+ }
+
+</style>
+</head>
+<body>
+
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">ELIJAH BABALOLA</div>
+
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#rec">Recommendations</a>
+        <a href="#profile">profile</a>
+    </div>
+
+</nav>
+
+
+
+<section class="hero" id="home">
+
+    <!-- Slides -->
+    <div class="slide active" style="background-image:url('assets/hero1.jfif')"></div>
+    <div class="slide" style="background-image:url('assets/hero2.jfif')"></div>
+    <div class="slide" style="background-image:url('assets/hero3.jfif')"></div>
+
+    <!-- Content -->
+    <div class="hero-content">
+
+        <div class="name">
+            <span>ELIJAH</span>
+            <span>BABALOLA</span>
+        </div>
+
+        <div class="role show" id="roleText">
+            Data Analyst
+        </div>
+
+        <div class="hero-buttons">
+            <a href="cv.html" class="btn-primary">CV</a>
+            <a href="Publications.html" class="btn-outline">Publications</a>
+            <a href="#" class="btn-outline">Extras</a>
+        </div>
+
+        <div class="social">
+            <a href="https://wa.me/+2349158715002" target="_blank">WhatsApp</a>
+            <a href="#">LinkedIn</a>
+            <a href="https://x.com/_Gamma_RC_" target="_blank">Twitter</a>
+            <a href="mailto:babalolaolumide2@gmail.com">Email</a>
+            <a href="#">Facebook</a>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <div class="about-container">
+
+        <div class="about-image">
+            <img src="assets/about.jpg" alt="Elijah Babalola">
+        </div>
+
+        <div class="about-text">
+
+            <h2>My Story</h2>
+
+            <p>
+                My journey into environmental science did not begin in a laboratory - it began with curiosity.
+                I grew up in <span>Osun State, Nigeria</span>, surrounded by changing seasons, intense rainfall,
+                dry harmattan winds, and the everyday realities of how weather affects people’s lives.
+                As someone born in the early 2000s, I often found myself wondering why floods happen,
+                why heat feels different some years, and how nature responds to human activity.
+                Those questions stayed with me.
+            </p>
+
+            <p>
+                That curiosity eventually led me to the <span>Federal University of Technology, Akure (FUTA)</span>,
+                where I studied Meteorology. University opened a new world for me; the physics of the atmosphere,
+                climate systems, environmental processes, and the realization that behind every environmental
+                challenge lies data waiting to be understood.
+            </p>
+
+            <p>
+                Along the way, I discovered something important: understanding the environment requires more than
+                scientific theory, it requires data, analysis, and the ability to interpret complex patterns.
+                That discovery naturally pushed me into data science. I began learning computational tools,
+                statistical analysis, and programming, not just as technical skills, but as instruments to answer
+                environmental questions more deeply.
+            </p>
+
+            <p>
+                Today, I stand at the intersection of <span>environmental science, climate research, and data analytics</span>.
+                I have conducted fieldwork, analyzed environmental datasets, explored climate variability patterns,
+                and worked on projects that connect science with real-world impact. Each experience has strengthened
+                my belief that research is not just about knowledge; it is about solving problems that affect
+                communities and ecosystems.
+            </p>
+
+            <p>
+                Beyond academics and technical skills, I see myself as someone driven by purpose. I am motivated by
+                discovery, by the process of learning, and by the possibility that scientific insight can improve lives.
+                Whether teaching students, analyzing climate data, or participating in environmental projects,
+                I am always searching for ways to grow and contribute meaningfully.
+            </p>
+
+            <p>
+                My long-term vision is to become a researcher and scientist whose work supports climate resilience,
+                environmental sustainability, and informed decision-making, especially in regions that are most
+                vulnerable to environmental change.
+            </p>
+
+            <div class="signature">
+                “Science becomes meaningful when it creates impact.”
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= PROFILE LINKS ================= -->
+
+<section class="profile-links" id="profile">
+
+
+    <div class="profile-container">
+
+        <a href="Academic.html" class="profile-btn">Academic Profile</a>
+
+        <a href="Projects.html" class="profile-btn">My Projects</a>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS / EXPERIENCE SECTION -->
+
+<section class="skills-section" id="skills">
+
+
+<div class="skills-overlay"></div>
+
+<div class="skills-container">
+
+    <!-- COLUMN 1 -->
+    <div class="column">
+
+        <h3>Software Skills</h3>
+
+        <div class="skill">
+            <span><b>Microsoft Office Suites</b></span>
+            <div class="bar"><div class="fill" data-width="99%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><b>Hydrognomon</b></span>
+            <div class="bar"><div class="fill" data-width="95%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><b>ArcGIS</b></span>
+            <div class="bar"><div class="fill" data-width="95%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><b>Python</b></span>
+            <div class="bar"><div class="fill" data-width="95%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><b>Machine Learning</b></span>
+            <div class="bar"><div class="fill" data-width="90%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><b>R</b></span>
+            <div class="bar"><div class="fill" data-width="60%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><b>PyFerret</b></span>
+            <div class="bar"><div class="fill" data-width="98%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><b>Climate Data Operator (CDO)</b></span>
+            <div class="bar"><div class="fill" data-width="99%"></div></div>
+        </div>
+
+
+        <h3 style="margin-top:40px;">Languages</h3>
+
+        <div class="skill">
+            <span><b>English</b></span>
+            <div class="bar"><div class="fill" data-width="95%"></div></div>
+        </div>
+
+        <div class="skill">
+            <span><b>Yoruba</b></span>
+            <div class="bar"><div class="fill" data-width="90%"></div></div>
+        </div>
+
+    </div>
+
+
+
+    <!-- COLUMN 2 -->
+    <div class="column">
+
+        <h3>Experience</h3>
+
+        <ul>
+            <li><b>Centre for Renewable Energy Technology (CRET), FUTA, Akure, Ondo State</b> — Undergraduate Intern</li>
+
+            <li>
+                <b>Nigerian Navy Hydrographic Office (NNHO), Apapa, Lagos State</b> — Intern  
+                <br><a href="https://nha.gov.ng/" target="_blank">Visit Website</a>
+            </li>
+
+            <li><b>Cryostar Consultancy, Akure, Ondo State</b> - Data Support Analyst</li>
+
+            <li><b>Ojoo High School, Ojoo, Ibadan, Oyo State</b> - Mathematics and Physics Teacher</li>
+
+            <li>
+                <b>Sidmach Technologies Nigeria Limited</b> - IT Instructor  
+                <br><a href="https://sidmach.com/" target="_blank">Visit Website</a>
+            </li>
+        </ul>
+
+
+        <h3 style="margin-top:35px;">Education</h3>
+
+        <ul>
+            <li><b>B.Tech Meteorology and Climate Science</b> — Federal University of Technology, Akure</li>
+
+            <li>
+                <b>Undergraduate Project:</b> Comparison of Sea Surface Temperature over Gulf of Guinea during Dry and Wet Year Composite of West Africa
+            </li>
+        </ul>
+
+    </div>
+
+
+
+    <!-- COLUMN 3 -->
+    <div class="column">
+
+        <h3>Professional Skills</h3>
+
+        <ul>
+            <li><b>Climate and Environmental Data Analysis</b></li>
+            <li><b>Statistical Modelling</b></li>
+            <li><b>Remote Sensing and GIS</b></li>
+            <li><b>Scientific Research and Reporting</b></li>
+            <li><b>Field Data Collection and Monitoring</b></li>
+            <li><b>Project Management</b></li>
+        </ul>
+
+
+        <h3 style="margin-top:35px;">Certifications</h3>
+
+        <ul>
+            <li><b>Digital Marketing</b> - IIE Institut</li>
+            <li><b>Applied Data Science</b> - WorldQuant University</li>
+            <li><b>Microsoft Office Specialist</b></li>
+            <li><b>Fundamentals of Hydrographic Survey</b> - International Hydrographic Organization</li>
+            <li><b>Green Energy Enterprise Building</b> - NYSC Certificate of Training</li>
+        </ul>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= RECOMMENDATIONS ================= -->
+
+<section class="recommendations" id="rec">
+    <h2>Recommendations</h2>
+
+    <div class="rec-container">
+
+        <!-- Recommendation 1 -->
+        <div class="rec-card">
+            <img src="assets/testimony1.jpg" alt="Odeyemi Olawale">
+            <div class="rec-text">
+                <h3>Odeyemi Olawale</h3>
+                <span>CEO, Cryostar Technologies, Akure Nigeria</span>
+                <p>
+                    Mr. Babalola was a dedicated Environmental Data Analyst in our company,
+                    working on diverse environmental and energy projects and representing
+                    the organization in data-driven initiatives.
+                    His ability to analyze data and propose innovative solutions greatly
+                    benefited Cryostar Technologies. His growth mindset, professionalism,
+                    and passion made him an invaluable member of our team.
+                    I confidently recommend him for any role requiring productivity,
+                    analytical strength, and innovation.
+                </p>
+            </div>
+        </div>
+
+        <!-- Recommendation 2 -->
+        <div class="rec-card">
+            <img src="assets/testimony2.jpg" alt="Dr. Babalola Ayodele Sunday">
+            <div class="rec-text">
+                <h3>Dr. Babalola Ayodele Sunday</h3>
+                <span>Retired Educator & Farmer</span>
+                <p>
+                    Olumide is not just my son, but a hardworking and innovative young man
+                    who transformed my palm oil farm through dedication and practical thinking.
+                    By applying remote monitoring systems and data-driven practices, he
+                    significantly improved yield and operational efficiency.
+                    I am proud of his vision, discipline, and strong commitment to progress.
+                </p>
+            </div>
+        </div>
+
+        <!-- Recommendation 3 -->
+        <div class="rec-card">
+            <img src="assets/testimony3.jpg" alt="Dr. Okunola Ababatunde Abraham">
+            <div class="rec-text">
+                <h3>Dr. Okunola Ababatunde Abraham</h3>
+                <span>Lecturer, Federal University of Technology, Akure (FUTA)</span>
+                <p>
+                    Mr. Babalola Elijah Olumide is a highly dedicated and intellectually
+                    strong graduate of Meteorology and Climate Science.
+                    His ability to apply geospatial and climate data analysis to real-world
+                    environmental challenges, combined with his research experience in
+                    ocean-atmosphere interactions and flood analysis, distinguishes him
+                    as an exceptional candidate.
+                    His curiosity, discipline, and analytical mindset make him well suited
+                    for advanced academic and professional environments.
+                </p>
+            </div>
+        </div>
+
+        <!-- Recommendation 4 -->
+        <div class="rec-card">
+            <img src="assets/testimony4.jpeg" alt="Akinlolu Elijah Moronkeji">
+            <div class="rec-text">
+                <h3>Akinlolu Elijah Moronkeji</h3>
+                <span>IT Instructor / Supervisor, Sidmach Technologies</span>
+                <p>
+                    Mr. Babalola Elijah has been a dedicated and impactful IT Instructor
+                    under my supervision. He demonstrated strong communication skills, analytical thinking,
+                    and the ability to simplify complex technical concepts for diverse learners.
+                    His initiative in mentoring student projects and applying technology
+                    to real-world problems reflects his interdisciplinary mindset and
+                    continuous drive for growth.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+
+/* SLIDES + ROLE ANIMATION */
+
+const slides = document.querySelectorAll('.slide');
+
+const roles = [
+    "Data Analyst",
+    "Environmental and Climate Scientist",
+    "Research Enthusiast"
+];
+
+let index = 0;
+
+function changeSlide(){
+
+    slides.forEach(slide => slide.classList.remove('active'));
+
+    index = (index + 1) % slides.length;
+
+    slides[index].classList.add('active');
+
+    const role = document.getElementById("roleText");
+
+    role.classList.remove("show");
+
+    setTimeout(()=>{
+        role.textContent = roles[index];
+        role.classList.add("show");
+    },300);
+
+}
+
+setInterval(changeSlide, 5000);
+
+</script>
+
+<script>
+
+/* BAR ANIMATION */
+
+const fills = document.querySelectorAll('.fill');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            const width = entry.target.getAttribute('data-width');
+            entry.target.style.width = width;
+        }
+    });
+},{threshold:0.5});
+
+fills.forEach(fill => observer.observe(fill));
+
+</script>
+
+</body>
+</html>

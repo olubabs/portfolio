@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic Profile - Elijah Babalola</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY */
+body{
+    font-family:'Poppins',sans-serif;
+    color:white;
+    background:url('assets/Academic_Profile.jfif') center/cover no-repeat fixed;
+}
+
+/* OVERLAY */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.85);
+    z-index:-1;
+}
+
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(20,20,25,0.35);
+    backdrop-filter:blur(12px);
+    z-index:999;
+}
+
+.logo{
+    font-family:'Playfair Display',serif;
+    color:#c6a96b;
+}
+
+/* HEADER */
+.page-header{
+    padding:140px 8% 40px;
+    text-align:center;
+    font-family:'Playfair Display',serif;
+    font-size:2.5rem;
+    color:#c6a96b;
+}
+
+/* CONTENT */
+.content{
+    max-width:1000px;
+    margin:0 auto 100px;
+    padding:40px;
+    background:rgba(0,0,0,0.5);
+    border-radius:12px;
+}
+
+/* TEXT */
+.subtitle{
+    font-size:1.2rem;
+    color:#c6a96b;
+    margin-bottom:10px;
+}
+
+.text{
+    margin-bottom:25px;
+    line-height:1.7;
+    text-align:justify;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th, td{
+    border:1px solid rgba(255,255,255,0.2);
+    padding:12px;
+    text-align:left;
+}
+
+th{
+    background:#c6a96b;
+    color:black;
+}
+
+/* BUTTON */
+.download-btn{
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 20px;
+    border:1px solid #c6a96b;
+    border-radius:25px;
+    color:#c6a96b;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.download-btn:hover{
+    background:#c6a96b;
+    color:black;
+}
+
+/* EXPERIENCE */
+.experience-block{
+    display:flex;
+    gap:25px;
+    margin-top:20px;
+    align-items:flex-start;
+}
+
+.exp-img{
+    width:220px;
+    border-radius:10px;
+}
+
+/* IMAGE GRID */
+.image-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+.image-grid img{
+    width:100%;
+    border-radius:8px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.content{
+    padding:20px;
+}
+
+.experience-block{
+    flex-direction:column;
+}
+
+.image-grid{
+    grid-template-columns:1fr 1fr;
+}
+
+@media(max-width:768px){
+
+.leadership{
+    grid-template-columns:1fr;
+}
+
+
+/* LEADERSHIP SECTION */
+.leadership{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    margin-top:20px;
+}
+
+.lead-item{
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:10px;
+    border-left:4px solid #c6a96b;
+    transition:0.3s;
+}
+
+.lead-item:hover{
+    transform:translateY(-5px);
+    background:rgba(198,169,107,0.15);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">ELIJAH BABALOLA</div>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">Academic Profile</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<!-- SECONDARY SCHOOL -->
+<div class="subtitle">Secondary School</div>
+
+<div class="text">
+ST John's Comprehensive Academy, Ilesa, Osun State.<br>
+West African Senior School Certificate 2016
+</div>
+
+<table>
+<tr><th>Subject</th><th>Grade</th></tr>
+<tr><td>English Language</td><td>B3</td></tr>
+<tr><td>Mathematics</td><td>B3</td></tr>
+<tr><td>English Language</td><td>B3</td></tr>
+<tr><td>Physics</td><td>B3</td></tr>
+<tr><td>Chemistry</td><td>B3</td></tr>
+<tr><td>Further Mathematics</td><td>A1</td></tr>
+<tr><td>Civic Education</td><td>A1</td></tr>
+<tr><td>Dyeing and Bleaching</td><td>A1</td></tr>
+<tr><td>Geography</td><td>C4</td></tr>
+<tr><td>Technical Drawing</td><td>C5</td></tr>
+</table>
+
+<a href="assets/WAEC_Certificate.jpg" class="download-btn" download>Download WAEC Certificate</a>
+
+<!-- TERTIARY -->
+<div class="subtitle" style="margin-top:40px;">Tertiary Education</div>
+
+<div class="text">
+Federal University of Technology, Akure 2024<br>
+Degree: Bachelor of Technology in Applied Physics<br>
+CGPA: 4.14 / 5.0
+</div>
+
+<a href="assets/Transcript.pdf" class="download-btn" download>Download Academic Transcript</a>
+<a href="assets/Degree_Certificate.jpg" class="download-btn" download>Download Certificate</a>
+
+<!-- COMPLEMENTARY -->
+<div class="subtitle" style="margin-top:40px;">Complementary Learning</div>
+
+<div class="text">
+
+<b>International Hydrography Organization (2024)</b><br>
+Course: Hydrographic Survey<br>
+<a href="assets/iho.pdf" class="download-btn" download>Download Certificate</a><br><br>
+
+<b>WorldQuant University (2026)</b><br>
+Course: Applied Data Science<br>
+<a href="assets/wqu.pdf" class="download-btn" download>Download Certificate</a><br><br>
+
+<b>NYSC Certificate of Training (2024)</b><br>
+Green Energy Enterprise<br>
+<a href="assets/nysc.pdf" class="download-btn" download>Download Certificate</a><br><br>
+
+<b>IIENSTITU (2025)</b><br>
+Course: Digital Marketing<br>
+<a href="assets/iie.pdf" class="download-btn" download>Download Certificate</a>
+
+</div>
+
+<!-- EXPERIENCE -->
+<div class="subtitle" style="margin-top:40px;">Experience Through Academic Journey</div>
+
+<div class="experience-block">
+
+<img src="assets/cret.jpg" class="exp-img">
+
+<div class="text">
+<b>Center for Renewable Energy Technology (CRET-FUTA)</b><br>
+Wind Energy Department, 2021<br><br>
+
+Contributed to groundbreaking research on wind energy dynamics, optimizing turbine efficiency and sustainability.<br><br>
+
+Spearheaded the design and construction of a miniature wind turbine prototype.<br><br>
+
+Collaborated with a team of engineers and researchers to test and refine turbine performance.<br><br>
+
+<a href="https://cret.futa.edu.ng" target="_blank">Visit Organization</a>
+</div>
+
+</div>
+
+<div class="experience-block" style="margin-top:40px;">
+
+    <div class="text">
+        <b>Field Research — Idanre Hill Meteorological Field Study</b><br><br>
+
+        Participated in environmental fieldwork involving on-site meteorological data collection,
+        surface-temperature measurement, and terrain-microclimate analysis.
+    </div>
+
+</div>
+
+<!-- IMAGE GRID FOR FIELD WORK -->
+<div class="image-grid">
+
+    <img src="assets/field1.jpg">
+    <img src="assets/field2.JPG">
+    <img src="assets/field3.JPG">
+
+</div>
+
+<!-- NAVY -->
+<div class="experience-block" style="margin-top:40px;">
+
+<div class="text">
+<b>Nigerian Navy Hydrography Office (Now National Hydrographic Agency)</b><br>
+Intern<br><br>
+
+Collaborated with multidisciplinary teams to prepare nautical charts for Calabar River and integrate blind navigation initiatives utilizing constellation technology.<br><br>
+
+Conducted data analysis and interpretation to optimize navigational routes and mitigate hazards.<br><br>
+
+Interacted with and gained operational experience aboard Nigerian Navy Ship LANA (A499).<br><br>
+
+<a href="https://nha.gov.ng" target="_blank">Visit Organization</a>
+</div>
+
+</div>
+
+<div class="image-grid">
+<img src="assets/navy1.jpeg">
+<img src="assets/navy2.jpg">
+<img src="assets/navy3.jpeg">
+<img src="assets/navy4.jpeg">
+<img src="assets/navy5.jpeg">
+<img src="assets/navy6.webp">
+</div>
+
+<!-- LEADERSHIP -->
+<div class="subtitle" style="margin-top:50px;">Leadership Experience</div>
+
+<div class="leadership">
+
+    <div class="lead-item">
+        <b>Speaker</b><br>
+        Nigerian Association of Earth and Mineral Sciences<br>
+        Parliamentary Council, FUTA (2020 – 2022)
+    </div>
+
+    <div class="lead-item">
+        <b>Chief Whip</b><br>
+        Nigerian Association of Earth and Mineral Sciences<br>
+        Parliamentary Council, FUTA (2018)
+    </div>
+
+    <div class="lead-item">
+        <b>Senior Special Assistant on Media and Publicity</b><br>
+        Office of the Financial Secretary – National Association of Nigerian Students (2021)
+    </div>
+
+    <div class="lead-item">
+        <b>Lead Green Fellowship Programme</b><br>
+        Team Lead - Sustainable Urban Development (2026)
+    </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications - Elijah Babalola</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    color:white;
+    background:url('assets/publication.jfif') center/cover no-repeat fixed;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.85);
+    z-index:-1;
+}
+
+/* HEADER */
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:999;
+    background:rgba(20,20,25,0.35);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:18px;
+    letter-spacing:2px;
+    color:#c6a96b;
+}
+
+.nav-links a{
+    color:#ddd;
+    text-decoration:none;
+    margin-left:28px;
+    font-size:13px;
+    letter-spacing:1px;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#c6a96b;
+}
+
+/* PAGE HEADER */
+.page-header{
+    padding:140px 8% 60px;
+    text-align:center;
+    font-family:'Playfair Display',serif;
+    font-size:2.5rem;
+    color:#c6a96b;
+}
+
+/* PUBLICATION LIST */
+.pub-list{
+    max-width:900px;
+    margin:0 auto 100px;
+    padding:40px;
+    background:rgba(0,0,0,0.5);
+    border-radius:12px;
+}
+
+.pub-item{
+    margin-bottom:30px;
+    line-height:1.6;
+    text-align:justify;
+}
+
+.pub-item a{
+    color:#c6a96b;
+    text-decoration:none;
+}
+
+.pub-item a:hover{
+    text-decoration:underline;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .pub-list{
+        padding:0 5%;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">ELIJAH BABALOLA</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="#">Publications</a>
+        <a href="index.html#contact">Contact</a>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">Publications</div>
+
+<!-- PUBLICATIONS LIST -->
+<div class="pub-list">
+
+    <div class="pub-item">
+        Babalola, E.O. (2025). <b>Comparison of Sea Surface Temperature Over Gulf of Guinea During Dry and Wet Year Composites of West Africa</b>. <a href="https://doi.org/10.5281/zenodo.17830239" target="_blank">https://doi.org/10.5281/zenodo.17830239</a>
+    </div>
+
+    <div class="pub-item">
+        Babalola, E.O. (2025). <b>Spatio-Temporal Analysis of Flood and Its Risk in Lokoja, Kogi State, Nigeria (Case Study of 2012, 2022 Flood in Lokoja)</b>. <a href="https://doi.org/10.5281/zenodo.17830079" target="_blank">https://doi.org/10.5281/zenodo.17830079</a>
+    </div>
+
+    <div class="pub-item">
+        Babalola, E.O. (2025). <b>Satellite-Based Assessment of Ecosystem Quality in Oyo State: Vegetation, Air Quality, and Heat Stress</b>. Submitted to Oyo State for 2025/2026 policy implementation.
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects - Elijah Babalola</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+
+/* BODY */
+body{
+    font-family:'Poppins',sans-serif;
+    color:white;
+    background:url('assets/projectheader.jfif') center/cover no-repeat fixed;
+}
+
+/* OVERLAY */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.85);
+    z-index:-1;
+}
+
+/* NAV */
+.navbar{
+    position:fixed;
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    background:rgba(20,20,25,0.35);
+    backdrop-filter:blur(10px);
+    z-index:999;
+}
+
+.logo{
+    color:#c6a96b;
+    font-family:'Playfair Display',serif;
+}
+
+/* HEADER */
+.header{
+    padding:140px 8% 40px;
+    text-align:center;
+    font-size:2.5rem;
+    font-family:'Playfair Display',serif;
+    color:#c6a96b;
+}
+
+/* GRID */
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    padding:0 8% 80px;
+}
+
+.project-card{
+    position:relative;
+    cursor:pointer;
+    overflow:hidden;
+    border-radius:12px;
+}
+
+.project-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    transition:0.4s;
+}
+
+.project-card span{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:15px;
+    background:rgba(0,0,0,0.7);
+    color:#c6a96b;
+}
+
+.project-card:hover img{
+    transform:scale(1.1);
+}
+
+/* OVERLAY BACKGROUND */
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(8px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    transition:all 0.4s ease;
+    z-index:1000;
+}
+
+/* ACTIVE STATE */
+.overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+/* CARD STYLE */
+.overlay-content{
+    background:#111;
+    width:85%;
+    max-width:900px;
+    max-height:90vh;
+    overflow-y:auto;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+
+    /* ANIMATION */
+    transform:translateY(50px) scale(0.95);
+    opacity:0;
+    transition:all 0.4s ease;
+}
+
+/* CARD ENTER */
+.overlay.active .overlay-content{
+    transform:translateY(0) scale(1);
+    opacity:1;
+}
+
+/* CLOSE BUTTON */
+.close-btn{
+    margin-top:20px;
+    padding:10px 20px;
+    background:#111;
+    color:#fff;
+    border-radius:6px;
+    cursor:pointer;
+    text-align:center;
+}
+
+/* BANNER */
+.banner{
+    width:100%;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+/* CLOSE */
+.close-btn{
+    margin-top:20px;
+    padding:10px 20px;
+    border:1px solid #c6a96b;
+    color:#c6a96b;
+    cursor:pointer;
+    display:inline-block;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.project-grid{
+    grid-template-columns:1fr;
+}
+
+/* SLIDER CONTAINER */
+.slider{
+    position:relative;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+/* SLIDES TRACK */
+.slides{
+    display:flex;
+    transition:transform 0.5s ease;
+}
+
+/* EACH SLIDE */
+.graph-slide{
+    min-width:100%;
+}
+
+.graph-slide img{
+    width:100%;
+    border-radius:10px;
+}
+
+/* BUTTONS */
+.prev, .next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,0,0,0.6);
+    color:#fff;
+    border:none;
+    padding:10px;
+    cursor:pointer;
+    border-radius:50%;
+}
+
+.prev{ left:10px; }
+.next{ right:10px; }
+
+.graph-title{
+    font-size:0.8rem;
+    margin-top:5px;
+}
+
+/* GRID TILES */
+.graph-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:20px;
+}
+
+.graph-grid img{
+    width:100%;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.graph-grid img:hover{
+    transform:scale(1.05);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.graph-grid{
+    grid-template-columns:1fr 1fr;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="logo">ELIJAH BABALOLA</div>
+</nav>
+
+<div class="header">Projects & Research</div>
+
+<!-- PROJECTS -->
+<div class="project-grid">
+
+<div class="project-card" onclick="openOverlay('o1')">
+<img src="assets/sstheader.jfif">
+<span>Sea Surface Temperature (Gulf of Guinea)</span>
+</div>
+
+<div class="project-card" onclick="openOverlay('o2')">
+<img src="assets/floodheader.jfif">
+<span>Spatio-Temporal Flood Analysis (Lokoja)</span>
+</div>
+
+<div class="project-card" onclick="openOverlay('o3')">
+<img src="assets/treeheader.jfif">
+<span>Tree Planting (Oyo State)</span>
+</div>
+
+<div class="project-card" onclick="openOverlay('o4')">
+<img src="assets/AQheader.jfif">
+<span>Air Quality (Nairobi)</span>
+</div>
+
+<div class="project-card" onclick="openOverlay('o5')">
+<img src="assets/arimaheader.jfif">
+<span>ARIMA Forecasting</span>
+</div>
+
+<div class="project-card" onclick="openOverlay('o6')">
+<img src="assets/mlheader.jfif">
+<span>Machine Learning Models</span>
+</div>
+
+<div class="project-card" onclick="openOverlay('o7')">
+<img src="assets/AHPheader.jfif">
+<span>GIS-AHP Flood Susceptibility</span>
+</div>
+
+</div>
+
+<!-- OVERLAYS -->
+
+<div class="overlay" id="o1">
+<div class="overlay-content">
+
+<img src="assets/sstheader.jfif" class="banner">
+
+<h3>Comparing Sea Surface Temperature over Gulf of Guinea during Dry and Wet Year Composites of West Africa</h3>
+
+<p>
+This research investigated the influence of Sea Surface Temperature (SST) variations in the Gulf of Guinea during dry and wet year composites over West Africa. It examined precipitation patterns relative to SST, analyzed rainfall variability to identify dry and wet years, and documented spatial and temporal SST patterns from 1981–2020 using ERA5 and CRU datasets. Five seasonal and annual SST time series were evaluated using coefficient of variation for variability, and PyFerret and Python for spatial-temporal analysis. The findings provided crucial insights into climate impacts on the Gulf, supporting regional adaptation and resilience strategies.
+</p>
+
+<a href="https://github.com/olubabs/Marine-" target="_blank">View Source Code</a>
+
+<!-- SLIDER -->
+<div class="slider">
+
+
+<div class="slides">
+
+<div class="graph-slide"><img src="assets/sst-graph1.jpg"><div class="graph-title">Regression Analysis</div></div>
+<div class="graph-slide"><img src="assets/sst-graph2.jpg"><div class="graph-title">Regression Plot</div></div>
+<div class="graph-slide"><img src="assets/sst-graph3.jpg"><div class="graph-title">Precipitation Distribution</div></div>
+<div class="graph-slide"><img src="assets/sst-graph4.jpg"><div class="graph-title">Precipitation vs SST</div></div>
+<div class="graph-slide"><img src="assets/sst-graph5.jpg"><div class="graph-title">Spatial SST</div></div>
+<div class="graph-slide"><img src="assets/sst-graph6.jpg"><div class="graph-title">Spatial SST</div></div>
+
+</div>
+
+
+</div>
+
+</div>
+
+<div class="close-btn" onclick="closeOverlay()">Close</div>
+
+</div>
+</div>
+
+<div class="overlay" id="o2">
+<div class="overlay-content">
+
+<img src="assets/floodheader.jfif" class="banner">
+
+<h3>Spatio-Temporal Analysis of Flood in Lokoja, Kogi State</h3>
+
+<p>
+This study, completed in 2023, utilized Remote Sensing and GIS to assess and analyze flood occurrences in Lokoja. It examined rainfall variability, land-use changes from 1991–2022, and flood-prone areas. Using Landsat, DEM, CRU, and POWER NASA datasets, the study rectified and geo-referenced imagery, clipped datasets to the study area, and computed a 12-month Standardized Precipitation Index for 1990–2022 to assess wetness and flood probabilities. Findings highlighted socio-economic vulnerabilities and informed strategies for sustainable flood mitigation.
+</p>
+
+<!-- SLIDER -->
+<div class="slider">
+
+<div class="slides">
+
+<div class="graph-slide"><img src="assets/flood-graph1.jpg"><div class="graph-title"></div></div>
+<div class="graph-slide"><img src="assets/flood-graph2.jpg"><div class="graph-title"></div></div>
+<div class="graph-slide"><img src="assets/flood-graph3.jpg"><div class="graph-title"></div></div>
+<div class="graph-slide"><img src="assets/flood-graph4.jpg"><div class="graph-title"></div></div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="close-btn" onclick="closeOverlay()">Close</div>
+
+</div>
+</div>
+
+<div class="overlay" id="o3">
+<div class="overlay-content">
+
+<img src="assets/treeheader.jfif" class="banner">
+
+<h3>Advancing Tree Planting in Oyo State: Strategic Ecosystem Restoration Research and Framework</h3>
+
+<p>
+This research assessed environmental degradation in Oyo State from 2015–2025, focusing on vegetation loss, pollution, and thermal stress. Using NDVI, LST, urban heat island analysis, air quality trends, and indigenous species evaluation, the study proposed afforestation, pollution control, sustainable urban planning, and green infrastructure strategies. It contributed actionable frameworks for policy, Gamma’s Green Agency interventions, and aligned with SDGs 3, 11, 13, and 15 to enhance resilience and community well-being.
+</p>
+
+<!-- SLIDER -->
+<div class="slider">
+
+<div class="slides">
+
+<div class="graph-slide"><img src="assets/tree-graph1.jpg"><div class="graph-title"></div></div>
+<div class="graph-slide"><img src="assets/tree-graph2.jpg"><div class="graph-title"></div></div>
+<div class="graph-slide"><img src="assets/tree-graph3.jpg"><div class="graph-title"></div></div>
+<div class="graph-slide"><img src="assets/tree-graph4.jpg"><div class="graph-title"></div></div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="close-btn" onclick="closeOverlay()">Close</div>
+
+</div>
+</div>
+
+<div class="overlay" id="o4">
+<div class="overlay-content">
+
+<img src="assets/AQheader.jfif" class="banner">
+
+<h3>Air Quality in Nairobi</h3>
+
+<p>
+This internal assignment, conducted as part of WorldQuant University coursework, focused on air quality assessment in Nairobi. It analyzed particulate and gaseous pollutants, urban sources, and mitigation strategies using statistical and visualization techniques, while respecting copyright constraints for results.
+</p>
+
+<a href="https://github.com/olubabs/Air-Quality" target="_blank">View Source Code</a>
+
+<!-- SLIDER -->
+<div class="slider">
+
+<div class="slides">
+
+<div class="graph-slide"><img src="assets/AQ1.jpg"><div class="graph-title"></div></div>
+<div class="graph-slide"><img src="assets/AQ2.jpg"><div class="graph-title"></div></div>
+<div class="graph-slide"><img src="assets/AQ4.jpg"><div class="graph-title"></div></div>
+<div class="graph-slide"><img src="assets/AQ3.jpg"><div class="graph-title"></div></div>
+
+</div>
+</div>
+
+</div>
+
+<div class="close-btn" onclick="closeOverlay()">Close</div>
+
+</div>
+</div>
+
+<div class="overlay" id="o5">
+<div class="overlay-content">
+
+<img src="assets/arimaheader.jfif" class="banner">
+
+<h3>ARIMA Forecasting Model</h3>
+
+<p>
+Time series forecasting using ARIMA to model environmental and climate-related datasets. The project focused on trend extraction, seasonality decomposition, and predictive modeling.
+</p>
+
+<a href="https://github.com/olubabs/AutoRegressive-Integrated-Moving-Average-ARIMA-" target="_blank">Script</a>
+
+</div>
+
+<div class="close-btn" onclick="closeOverlay()">Close</div>
+
+</div>
+</div>
+
+
+<div class="overlay" id="o6">
+<div class="overlay-content">
+
+<img src="assets/mlheader.jfif" class="banner">
+
+<h3>Machine Learning Applications</h3>
+
+<p>
+Applied machine learning techniques to environmental datasets, including regression models, classification, and predictive analytics for climate and geospatial data interpretation.
+</p>
+
+<a href="https://github.com/olubabs/Comparison" target="_blank">Scripts</a>
+
+
+</div>
+
+<div class="close-btn" onclick="closeOverlay()">Close</div>
+
+</div>
+</div>
+
+<div class="overlay" id="o7">
+<div class="overlay-content">
+
+<img src="assets/AHPheader.jfif" class="banner">
+
+<h3>GIS-AHP Flood Susceptibility Mapping</h3>
+
+<p>
+Integrated GIS and Analytical Hierarchy Process (AHP) to model flood susceptibility zones. The study combined 10 environmental factors such as elevation, slope, distance from river, distance from road, soil type, topographic wetness index, Normalized Difference Vegetation Index, rainfall, drainage, and land use.
+</p>
+
+<div class="slider">
+
+<div class="slides">
+<div class="graph-slide"><img src="assets/gis1.jpg"><div class="graph-title">Flood Susceptibility Map</div></div>
+<div class="graph-slide"><img src="assets/gis2.jpg"><div class="graph-title">Flood Susceptibility Scenario Map</div></div>
+</div>
+</div>
+
+<div class="close-btn" onclick="closeOverlay()">Close</div>
+
+</div>
+</div>
+
+<script>
+function openOverlay(id){
+    document.getElementById(id).classList.add("active");
+}
+
+function closeOverlay(){
+    document.querySelectorAll(".overlay").forEach(el=>{
+        el.classList.remove("active");
+    });
+}
+</script>
+
+
+
+
+</body>
+</html>
